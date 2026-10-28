@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guia de montagem – Painel de LED</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--bg:#f4f4f1;--surface:#fff;--ink:#1a1a1a;--muted:#5f5f5f;--line:#dcdcd6;--accent:#c70069;--mag:#ff0580;--cy:#2db7e0;--yel:#ffd104;--warn:#5c4700;--warnbg:#fff3b8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e0e0e;--surface:#1a1a1a;--ink:#f3f3f3;--muted:#a9a9a9;--line:#333;--accent:#ff0580;--warn:#ffd104;--warnbg:#3a3200;color-scheme:dark}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "IBM Plex Sans",system-ui,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:20px 16px 48px}
+.top{background:#1a1a1a;color:#fff;border-bottom:3px solid var(--mag)}
+.top .in{max-width:1100px;margin:0 auto;padding:16px;display:flex;align-items:center;gap:16px}
+.top h1{margin:0;color:#fff}
+.top .sub{margin:2px 0 0;color:#c4c4c4}
+.mark{position:relative;width:50px;height:42px;flex:none}
+.mark i{position:absolute;width:16px;height:16px;transform:rotate(45deg)}
+.mark i:nth-child(1){left:17px;top:2px;background:#ffd104}
+.mark i:nth-child(2){left:3px;top:16px;background:#ff0580}
+.mark i:nth-child(3){left:31px;top:16px;background:#2db7e0}
+h1{font-size:1.5rem;margin:0 0 4px;font-weight:600}
+h2{font-size:1.05rem;margin:0 0 12px;font-weight:600}
+.sub{color:var(--muted);margin:0 0 20px}
+.grid{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:16px;align-items:start}
+@media(max-width:820px){.grid{grid-template-columns:1fr}}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;margin-bottom:16px}
+label{display:block;font-size:.85rem;color:var(--muted);margin:10px 0 3px}
+input,select{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px 10px}
+input:focus-visible,button:focus-visible,select:focus-visible,.scene:focus-visible{outline:3px solid var(--cy);outline-offset:2px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+details summary{cursor:pointer;font-weight:500;margin-top:14px}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+th{font-weight:500;color:var(--muted);font-size:.85rem}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+td.big{font-weight:600;font-size:1.1rem}
+.warn{background:var(--warnbg);color:var(--warn);border-left:4px solid var(--yel);border-radius:6px;padding:10px 12px;margin-bottom:12px}
+.tabs{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:6px;padding:7px 12px}
+button[aria-pressed="true"]{background:var(--yel);color:#1a1a1a;border-color:#1a1a1a;font-weight:600}
+button.print{margin-left:auto}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--bg);padding:8px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:.85rem}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:14px;height:14px;border-radius:3px;display:inline-block}
+.groups{columns:2;column-gap:20px;font-size:.9rem}
+.groups div{break-inside:avoid;margin-bottom:4px}
+@media(max-width:560px){.groups{columns:1}}
+h3{font-size:.95rem;margin:16px 0 6px;font-weight:600}
+.info{background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--cy);border-radius:6px;padding:10px 12px;margin-bottom:12px}
+.scroll{margin-bottom:8px}
+.fc{border:1px solid var(--line);border-left:5px solid var(--fcol);border-radius:8px;padding:10px 12px;margin-top:10px;background:var(--bg)}
+.fh{display:flex;justify-content:space-between;align-items:center;font-weight:600}
+.fh button{padding:1px 9px;min-width:0;font-size:1.1rem;line-height:1.4}
+.fh button:disabled{opacity:.35;cursor:default}
+.dim{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:end}
+.dim span{padding-bottom:9px;color:var(--muted)}
+.cap{color:var(--muted);font-size:.8rem;margin-top:6px}
+.addf{width:100%;margin-top:12px;border-style:dashed;padding:10px;font-weight:500;color:var(--accent)}
+.addf:disabled{opacity:.4;cursor:default}
+.scene{perspective:1100px;height:380px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--bg);border:1px solid var(--line);border-radius:6px;cursor:grab;touch-action:pan-y;user-select:none}
+.scene:active{cursor:grabbing}
+.rot{position:relative;width:0;transform-style:preserve-3d}
+.pn{position:absolute;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-weight:600;font-size:12px;line-height:1.3;text-shadow:0 1px 2px rgba(0,0,0,.65);border:1px solid rgba(255,255,255,.6);overflow:hidden;text-align:center}
+.flo{position:absolute;background:rgba(120,130,140,.3);border:1px dashed var(--muted)}
+@media print{body{background:#fff;color:#000}.top{background:#fff;color:#000}.top h1,.top .sub{color:#000}.noprint{display:none!important}.box{border-color:#999}.grid{display:block}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in"><div class="mark" aria-hidden="true"><i></i><i></i><i></i></div><div><h1>Guia de montagem – painel de LED</h1><p class="sub">Adicione as faces da coluna (até 4), informe as medidas de cada uma e veja as peças, os diagramas e a visão 3D.</p></div></div></header>
+<main>
+<div class="grid">
+<div class="noprint">
+  <div class="box">
+    <h2 style="margin-bottom:0">Faces da coluna</h2>
+    <div id="faces"></div>
+    <label for="mode">Medida que não fecha em módulos inteiros</label>
+    <select id="mode"><option value="up">Arredondar para cima</option><option value="down">Arredondar para baixo</option></select>
+    <label for="res">Reserva de ima e cabos (%)</label>
+    <input id="res" type="number" min="0" value="5">
+    <details>
+      <summary>Regras do modelo</summary>
+      <div class="row">
+        <div><label for="mw">Módulo – largura (cm)</label><input id="mw" type="number" value="32"></div>
+        <div><label for="mh">Módulo – altura (cm)</label><input id="mh" type="number" value="16"></div>
+        <div><label for="pf">Módulos por fonte</label><input id="pf" type="number" min="1" value="8"></div>
+        <div><label for="pr">Módulos por receiving</label><input id="pr" type="number" min="1" value="12"></div>
+        <div><label for="ps">Ima por módulo</label><input id="ps" type="number" min="0" value="4"></div>
+        <div><label for="pcl">Patch cord – tamanho (cm)</label><input id="pcl" type="number" min="1" value="150"></div>
+        <div><label for="ppl">Cabo PP por fonte (cm)</label><input id="ppl" type="number" min="1" value="100"></div>
+        <div><label for="pmc">Módulos por cabo DC</label><input id="pmc" type="number" min="1" value="2"></div>
+        <div><label for="mdc">Máx. cabos DC por fonte</label><input id="mdc" type="number" min="1" value="4"></div>
+      </div>
+      <label>Tamanhos de cabo flat disponíveis (cm)</label>
+      <div class="row3">
+        <input id="c1" type="number" min="1" value="25" aria-label="Cabo curto">
+        <input id="c2" type="number" min="1" value="40" aria-label="Cabo médio">
+        <input id="c3" type="number" min="1" value="80" aria-label="Cabo longo">
+      </div>
+    </details>
+  </div>
+</div>
+
+<div>
+  <div id="warn"></div>
+  <div class="box">
+    <h2>Lista de peças</h2>
+    <div id="parts"></div>
+  </div>
+  <div class="box">
+    <div class="tabs noprint">
+      <button id="tR" aria-pressed="true">Receiving e cabos</button>
+      <button id="tF" aria-pressed="false">Fontes</button>
+      <button class="print" id="pr1">Imprimir / salvar PDF</button>
+    </div>
+    <h2 id="dtitle"></h2>
+    <div id="diagram"></div>
+    <div class="legend" id="legend"></div>
+  </div>
+  <div class="box">
+    <h2>Grupos</h2>
+    <div class="groups" id="groups"></div>
+  </div>
+  <div class="box">
+    <div class="tabs noprint"><h2 style="margin:0;align-self:center">Visão 3D da coluna</h2><button class="print" id="rl" aria-label="Girar para a esquerda">⟲</button><button id="rr" aria-label="Girar para a direita">⟳</button></div>
+    <div class="scene" id="scene"><div class="rot" id="rot3"></div></div>
+    <div class="legend" id="d3leg"></div>
+    <p class="sub" style="margin:8px 0 0">Arraste para girar. As faces ficam alinhadas pela base e a grade mostra os módulos.</p>
+  </div>
+</div>
+</div>
+</main>
+
+<script>
+var COLORS=["#0b6e8a","#c2410c","#6d28d9","#15803d","#be185d","#a16207","#0369a1","#b91c1c","#4d7c0f","#7e22ce","#0f766e","#9f1239"];
+var view="R";
+function $(id){return document.getElementById(id)}
+function num(id,d){var v=parseFloat($(id).value);return isFinite(v)&&v>0?v:d}
+function num0(id){var v=parseFloat($(id).value);return isFinite(v)&&v>=0?v:0}
+
+// escolhe o bloco (largura x altura em módulos) que gera menos grupos e fica mais quadrado no painel real
+function best(N,cols,rows,mw,mh,maxD){
+  var b=null;
+  for(var bw=1;bw<=Math.min(N,cols);bw++){
+    for(var bh=1;bh<=Math.min(N,rows);bh++){
+      if(bw*bh>N)continue;
+      if(maxD&&((bw-1)/2*mw+(bh-1)/2*mh)>maxD+1e-9)continue;
+      var g=Math.ceil(cols/bw)*Math.ceil(rows/bh),a=bw*bh,asp=Math.abs(bw*mw-bh*mh);
+      if(!b||g<b.g||(g===b.g&&(a>b.a||(a===b.a&&asp<b.asp))))b={bw:bw,bh:bh,g:g,a:a,asp:asp};
+    }
+  }
+  return {bw:b.bw,bh:b.bh,nbc:Math.ceil(cols/b.bw),nbr:Math.ceil(rows/b.bh),count:b.g};
+}
+function place(t,r,c,cols,rows,snake){
+  var bc=Math.floor(c/t.bw),br=Math.floor(r/t.bh),bi=(snake&&br%2===1)?t.nbc-1-bc:bc;
+  var aw=Math.min(t.bw,cols-bc*t.bw),ah=Math.min(t.bh,rows-br*t.bh);
+  return {g:br*t.nbc+bi,cx:bc*t.bw+aw/2,cy:br*t.bh+ah/2,x0:bc*t.bw,y0:br*t.bh,aw:aw,ah:ah};
+}
+
+function calc(W,H){
+  var mw=num("mw",32),mh=num("mh",16);W=W>0?W:mw;H=H>0?H:mh;
+  var f=$("mode").value==="up"?Math.ceil:Math.floor;
+  var cols=Math.max(1,f(W/mw-1e-9)),rows=Math.max(1,f(H/mh-1e-9));
+  var warn=[];
+  if(W%mw!==0||H%mh!==0)warn.push("As medidas não fecham em módulos inteiros. Painel calculado: "+cols*mw+" × "+rows*mh+" cm ("+cols+" × "+rows+" módulos).");
+  var pf=num("pf",4),pr=num("pr",12),total=cols*rows,pmc=num("pmc",2),mdc=num("mdc",4);
+  if(pf>mdc*pmc){warn.push("Cada fonte aceita no máximo "+mdc+" cabos DC ("+mdc*pmc+" módulos). O cálculo usou "+mdc*pmc+" módulos por fonte em vez de "+pf+".");pf=mdc*pmc}
+  var sizes=[num("c1",25),num("c2",40),num("c3",80)].sort(function(a,b){return a-b});
+  var tF=best(pf,cols,rows,mw,mh),tR=best(pr,cols,rows,mw,mh,sizes[sizes.length-1]);
+  var minF0=Math.ceil(total/pf),fChunk=tF.count>minF0;
+  if(fChunk)tF={count:minF0,bw:0,bh:0,nbc:0,nbr:0};
+  var mods=[],cnt={},over=0;
+  for(var r=0;r<rows;r++)for(var c=0;c<cols;c++){
+    var m={n:r*cols+c+1,r:r,c:c};
+    m.F=fChunk?null:place(tF,r,c,cols,rows,true);m.R=place(tR,r,c,cols,rows,true);
+    m.dist=Math.abs(c+0.5-m.R.cx)*mw+Math.abs(r+0.5-m.R.cy)*mh;
+    m.cab=sizes[sizes.length-1];
+    for(var i=0;i<sizes.length;i++){if(sizes[i]>=m.dist-1e-9){m.cab=sizes[i];break}}
+    if(m.dist>sizes[sizes.length-1]+1e-9)over++;
+    cnt[m.cab]=(cnt[m.cab]||0)+1;
+    mods.push(m);
+  }
+  if(fChunk){
+    var ordm=mods.slice().sort(function(a,b){return a.r!==b.r?a.r-b.r:(a.r%2?b.c-a.c:a.c-b.c)});
+    var gm={};
+    ordm.forEach(function(m,i){m.F={g:Math.floor(i/pf),ord:i,cx:0,cy:0};(gm[m.F.g]=gm[m.F.g]||[]).push(m)});
+    Object.keys(gm).forEach(function(g){var L=gm[g],mid=L[Math.floor(L.length/2)];L.forEach(function(m){m.F.cx=mid.c+0.5;m.F.cy=mid.r+0.5})});
+  }
+  var byG={};
+  mods.forEach(function(m){(byG[m.F.g]=byG[m.F.g]||[]).push(m)});
+  var dc=[],dcBy={};
+  Object.keys(byG).forEach(function(g){
+    var L=byG[g];
+    L.sort(function(a,b){
+      if(a.F.ord!==undefined)return a.F.ord-b.F.ord;var ra=a.r-a.F.y0,rb=b.r-b.F.y0;if(ra!==rb)return ra-rb;
+      var ca=a.c-a.F.x0,cb=b.c-b.F.x0;if(ra%2===1){ca=-ca;cb=-cb}return ca-cb;
+    });
+    for(var i=0;i<L.length;i+=pmc){dc.push({g:+g,ms:L.slice(i,i+pmc)});dcBy[g]=(dcBy[g]||0)+1}
+  });
+  var fc={},rc={};
+  mods.forEach(function(m){fc[m.F.g]=m.F;rc[m.R.g]=m.R});
+  var used={},rcab=[],rcFor={},shared=false;
+  Object.keys(rc).map(Number).sort(function(a,b){return a-b}).forEach(function(g){
+    var best=null,bd=0,any=null,ad=0;
+    Object.keys(fc).forEach(function(f){
+      var dd=Math.abs(fc[f].cx-rc[g].cx)*mw+Math.abs(fc[f].cy-rc[g].cy)*mh;
+      if(any===null||dd<ad){any=f;ad=dd}
+      if(!used[f]&&(best===null||dd<bd)){best=f;bd=dd}
+    });
+    if(best===null){best=any;shared=true}
+    used[best]=1;rcab.push({f:+best,r:g});rcFor[best]=g;
+  });
+  if(shared)warn.push("Há mais receiving que fontes: alguma fonte alimenta mais de um receiving.");
+  if(over)warn.push(over+" módulo(s) ficam a mais de "+sizes[sizes.length-1]+" cm do receiving. Reduza o número de módulos por receiving ou use um cabo maior.");
+  var minF=Math.ceil(total/pf),minR=Math.ceil(total/pr);
+  if(tF.count>minF)warn.push("Para manter as fontes centralizadas em blocos, foram necessárias "+tF.count+" fontes (mínimo por conta: "+minF+").");
+  if(tR.count>minR)warn.push("Para manter cada receiving no centro do bloco e a até "+sizes[sizes.length-1]+" cm de todos os seus módulos, foram necessários "+tR.count+" receiving (mínimo por conta: "+minR+"). Alguns podem atender poucos módulos.");
+  return {rcab:rcab,rcFor:rcFor,dc:dc,dcBy:dcBy,cols:cols,rows:rows,total:total,mods:mods,warn:warn,cnt:cnt,tF:tF,tR:tR,
+    fontes:tF.count,recs:tR.count,screws:total*num0("ps"),mw:mw,mh:mh};
+}
+
+var nf=1,faces=[{w:192,h:96}],ang=-35;
+
+function screwOf(i){return faces.length===1?0:(i%2===0?4:10)}
+function render(){
+  nf=faces.length;
+  var res=num0("res")/100,rv=function(n){return Math.ceil(n*(1+res))};
+  var ds=faces.slice(0,nf).map(function(f){return calc(f.w,f.h)});
+  ds.forEach(function(d,i){var c=$("cap"+i);if(c)c.textContent=(d.cols*d.mw)+" × "+(d.rows*d.mh)+" cm · "+d.total+" módulos ("+d.cols+" × "+d.rows+") · Ima "+screwOf(i)+"mm"});
+  var T={mod:0,fon:0,rec:0,s:{},dc:0,cnt:{}},warn="";
+  ds.forEach(function(d,i){
+    T.mod+=d.total;T.fon+=d.fontes;T.rec+=d.recs;d.sc=screwOf(i);T.s[d.sc]=(T.s[d.sc]||0)+d.screws;T.dc+=d.dc.length;
+    Object.keys(d.cnt).forEach(function(k){T.cnt[k]=(T.cnt[k]||0)+d.cnt[k]});
+    d.warn.forEach(function(w){warn+='<div class="warn">'+(nf>1?'Face '+(i+1)+': ':'')+w+'</div>'});
+  });
+  if(nf>1){
+    var ws=ds.map(function(d){return d.cols*d.mw}),hs=ds.map(function(d){return d.rows*d.mh});
+    var uniq=function(a){return a.filter(function(v,i){return a.indexOf(v)===i}).length};
+    var df=[];if(uniq(ws)>1)df.push("larguras diferentes");if(uniq(hs)>1)df.push("alturas diferentes");
+    if(df.length)warn+='<div class="info">As faces têm '+df.join(" e ")+'. Cada face é calculada como um painel separado, com fontes e receiving próprios.</div>';
+    if(nf===4&&(ws[0]!==ws[2]||ws[1]!==ws[3]))warn+='<div class="info">Em uma coluna de seção retangular, faces opostas (1 e 3, 2 e 4) costumam ter a mesma largura. Confira as medidas.</div>';
+    if(uniq(hs)>1)warn+='<div class="info">Alturas diferentes: defina se o alinhamento é pela base ou pelo topo da coluna antes de montar.</div>';
+  }
+  $("warn").innerHTML=warn;
+  var d0=ds[0],pc=String(num("pcl",150)/100).replace(".",","),pp=String(num("ppl",100)/100).replace(".",",");
+  var rows=[["Módulos de LED"+(nf===1?" ("+d0.cols+" × "+d0.rows+")":""),T.mod,null],
+    ["Fontes",T.fon,null],["Receiving",T.rec,null],
+    ["Ima 0mm ("+num0("ps")+" por módulo)",T.s[0]||0,rv(T.s[0]||0)],["Ima 4mm ("+num0("ps")+" por módulo)",T.s[4]||0,rv(T.s[4]||0)],["Ima 10mm ("+num0("ps")+" por módulo)",T.s[10]||0,rv(T.s[10]||0)],
+    ["Cabo DC para os módulos (1 a cada "+num("pmc",2)+" módulos)",T.dc,rv(T.dc)],
+    ["Cabo DC para o receiving (1 por receiving, sai da fonte)",T.rec,rv(T.rec)],
+    ["Patch cord "+pc+" m (1 por receiving + 1 para o NUC)",T.rec+1,rv(T.rec+1)],
+    ["Cabo PP "+pp+" m (1 por fonte, jump entre fontes)",T.fon,rv(T.fon)]];
+  Object.keys(T.cnt).map(Number).sort(function(a,b){return a-b}).forEach(function(k){rows.push(["Cabo flat "+k+" cm",T.cnt[k],rv(T.cnt[k])])});
+  rows=rows.filter(function(r){return r[1]>0});
+  var html=(nf>1?'<h3>Total da coluna ('+nf+' faces)</h3>':'')+'<table><thead><tr><th>Peça</th><th class="n">Quantidade</th><th class="n">Com reserva ('+Math.round(res*100)+'%)</th></tr></thead><tbody>';
+  rows.forEach(function(r){html+='<tr><td>'+r[0]+'</td><td class="n big">'+r[1]+'</td><td class="n">'+(r[2]===null?"–":r[2])+'</td></tr>'});
+  html+='</tbody></table><p class="sub" style="margin:10px 0 0">Cabos flat: 1 por módulo ('+T.mod+').'+(nf===1?' Painel final: '+(d0.cols*d0.mw)+' × '+(d0.rows*d0.mh)+' cm.':' Um único NUC para a coluna.')+'</p>';
+  if(nf>1){
+    html+='<h3>Por face</h3><table><thead><tr><th>Face</th><th>Painel (cm)</th><th class="n">Módulos</th><th class="n">Fontes</th><th class="n">Receiving</th><th>Ima</th></tr></thead><tbody>';
+    ds.forEach(function(d,i){html+='<tr><td>Face '+(i+1)+'</td><td>'+(d.cols*d.mw)+' × '+(d.rows*d.mh)+' ('+d.cols+' × '+d.rows+')</td><td class="n">'+d.total+'</td><td class="n">'+d.fontes+'</td><td class="n">'+d.recs+'</td><td>Ima '+d.sc+'mm</td></tr>'});
+    html+='</tbody></table>';
+  }
+  $("parts").innerHTML=html;
+  var isR=view==="R",dg="";
+  $("dtitle").textContent=isR?"Diagrama de receiving e cabos flat (ligação em estrela)":"Diagrama de fontes (ligação em estrela)";
+  ds.forEach(function(d,i){
+    dg+=(nf>1?'<h3>Face '+(i+1)+' – '+(d.cols*d.mw)+' × '+(d.rows*d.mh)+' cm · Ima '+d.sc+'mm</h3>':'')+'<div class="scroll">'+drawDiagram(d,i===0?"NUC":"← F"+i)+'</div>';
+  });
+  $("diagram").innerHTML=dg;
+  $("legend").innerHTML=isR
+    ?'<span>Cada receiving fica no centro do seu bloco. Número sobre a linha fina = cabo flat (cm). Linha tracejada preta = patch cord: NUC → R1 → R2 → …'+(nf>1?' O patch cord continua de uma face para a próxima (← F1 = vem da face anterior).':'')+'</span>'
+    :'<span>Cada fonte fica perto do meio do seu grupo de módulos. Linha grossa com pontas = um cabo DC que alimenta 2 módulos. Cada fonte aceita até 4 cabos DC de módulos (8 módulos) mais 1 cabo extra para o receiving. Linha laranja = cabo DC da fonte até o receiving (R). Linha pontilhada preta = cabo PP de '+pp+' m entre as fontes (jump).</span>';
+  $("groups").innerHTML=ds.map(function(d,i){return (nf>1?'<div style="column-span:all"><b>Face '+(i+1)+'</b></div>':'')+drawGroups(d)}).join("");
+  draw3d(ds);
+}
+
+function updSteps(){
+  var mw=num("mw",32),mh=num("mh",16);
+  document.querySelectorAll("[data-k]").forEach(function(e){var v=e.dataset.k==="w"?mw:mh;e.min=v;e.step=v});
+}
+function buildFaces(){
+  var mw=num("mw",32),mh=num("mh",16),h="";
+  faces.forEach(function(f,i){
+    h+='<div class="fc" style="--fcol:'+COLORS[i%COLORS.length]+'"><div class="fh"><span>Face '+(i+1)+'</span><button data-del="'+i+'" aria-label="Remover face '+(i+1)+'"'+(faces.length<2?' disabled':'')+'>×</button></div>'
+     +'<div class="dim"><div><label for="fw'+i+'">Largura (cm)</label><input id="fw'+i+'" data-f="'+i+'" data-k="w" type="number" min="'+mw+'" step="'+mw+'" value="'+f.w+'"></div><span>×</span><div><label for="fh'+i+'">Altura (cm)</label><input id="fh'+i+'" data-f="'+i+'" data-k="h" type="number" min="'+mh+'" step="'+mh+'" value="'+f.h+'"></div></div>'
+     +'<div class="cap" id="cap'+i+'"></div></div>';
+  });
+  h+='<button class="addf" data-add="1"'+(faces.length>=4?' disabled':'')+'>+ Adicionar face'+(faces.length>=4?' (máximo de 4)':'')+'</button>';
+  $("faces").innerHTML=h;
+}
+
+function applyAng(){var r=$("rot3");if(r)r.style.transform="rotateX(-18deg) rotateY("+ang+"deg)"}
+function draw3d(ds){
+  var n=ds.length,mw=ds[0].mw,mh=ds[0].mh;
+  var W=ds.map(function(d){return d.cols*d.mw}),H=ds.map(function(d){return d.rows*d.mh});
+  var avg=function(a){a=a.filter(function(v){return v>0});return a.length?a.reduce(function(x,y){return x+y},0)/a.length:0};
+  var Wx=avg([W[0],W[2]]),Dz=avg([W[1],W[3]]);
+  var Hm=Math.max.apply(null,H),sc=Math.min(300/Hm,260/Math.max(Wx,Dz,1));
+  var ang3=[0,90,180,-90],dist=[Dz/2,Wx/2,Dz/2,Wx/2],h="";
+  if(n>1&&Wx>0&&Dz>0)h+='<div class="flo" style="left:'+(-Wx*sc/2)+'px;top:'+(Hm*sc-Dz*sc/2)+'px;width:'+(Wx*sc)+'px;height:'+(Dz*sc)+'px;transform:rotateX(90deg)"></div>';
+  ds.forEach(function(d,i){
+    var col=COLORS[i%COLORS.length],g="rgba(255,255,255,.35)";
+    h+='<div class="pn" style="left:'+(-W[i]*sc/2)+'px;top:'+((Hm-H[i])*sc)+'px;width:'+(W[i]*sc)+'px;height:'+(H[i]*sc)+'px;background-color:'+col+'e6;background-image:linear-gradient('+g+' 1px,transparent 1px),linear-gradient(90deg,'+g+' 1px,transparent 1px);background-size:'+(mw*sc)+'px '+(mh*sc)+'px;transform:rotateY('+ang3[i]+'deg) translateZ('+(dist[i]*sc)+'px)"><div>Face '+(i+1)+'</div><div>'+W[i]+' × '+H[i]+' cm</div></div>';
+  });
+  var r=$("rot3");r.style.height=(Hm*sc)+"px";r.innerHTML=h;applyAng();
+  $("d3leg").innerHTML=ds.map(function(d,i){return '<span><i style="background:'+COLORS[i%COLORS.length]+'"></i>Face '+(i+1)+' – '+W[i]+' × '+H[i]+' cm</span>'}).join("")
+    +(n>1?'<span>Altura da coluna: '+Hm+' cm</span>':'');
+}
+
+function drawDiagram(d,lab){
+  var CW=72,CH=36,pad=10,isR=view==="R",k=isR?"R":"F",tag=isR?"R":"F";
+  var top=isR?30:0,py=pad+top,W=d.cols*CW+pad*2,H=d.rows*CH+pad*2+top;
+  var s='<svg xmlns="http://www.w3.org/2000/svg" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Diagrama do painel">';
+  var lbl='style="paint-order:stroke;stroke:var(--surface);stroke-width:3px"';
+  d.mods.forEach(function(m){
+    var x=pad+m.c*CW,y=py+m.r*CH,col=COLORS[m[k].g%COLORS.length];
+    s+='<rect x="'+x+'" y="'+y+'" width="'+CW+'" height="'+CH+'" fill="'+col+'" fill-opacity="0.16" stroke="'+col+'" stroke-opacity="0.5" stroke-width="1"/>';
+  });
+  // linhas da teia: do centro do bloco até cada módulo
+  d.mods.forEach(function(m){
+    var g=m[k],col=COLORS[g.g%COLORS.length];
+    var x1=pad+g.cx*CW,y1=py+g.cy*CH,x2=pad+(m.c+0.5)*CW,y2=py+(m.r+0.5)*CH;
+    if(!isR||(Math.abs(x1-x2)<0.5&&Math.abs(y1-y2)<0.5))return;
+    // percurso em L (horizontal depois vertical) como o cabo real
+    s+='<polyline points="'+x1+','+y1+' '+x2+','+y1+' '+x2+','+y2+'" fill="none" stroke="'+col+'" stroke-width="'+(isR?2:1.5)+'" stroke-linejoin="round"/>';
+  });
+  if(!isR){
+    d.dc.forEach(function(p){
+      var col=COLORS[p.g%COLORS.length],g=p.ms[0].F;
+      var pts=p.ms.map(function(m){return [pad+(m.c+0.5)*CW,py+(m.r+0.5)*CH]});
+      var tx=pts.reduce(function(a,q){return a+q[0]},0)/pts.length,ty=pts.reduce(function(a,q){return a+q[1]},0)/pts.length;
+      var fx=pad+g.cx*CW,fy=py+g.cy*CH;
+      s+='<polyline points="'+fx+','+fy+' '+tx+','+fy+' '+tx+','+ty+'" fill="none" stroke="'+col+'" stroke-width="2" stroke-linejoin="round"/>';
+      if(pts.length>1)s+='<polyline points="'+pts.map(function(q){return q.join(",")}).join(" ")+'" fill="none" stroke="'+col+'" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>';
+      pts.forEach(function(q){s+='<circle cx="'+q[0]+'" cy="'+q[1]+'" r="3.5" fill="'+col+'"/>'});
+    });
+  }
+  d.mods.forEach(function(m){
+    var x=pad+m.c*CW,y=py+m.r*CH;
+    s+='<text x="'+(x+CW/2)+'" y="'+(y+31)+'" text-anchor="middle" font-size="10" font-weight="600" fill="currentColor" '+lbl+'>'+m.n+'</text>';
+    if(isR){
+      var g=m.R,x2=pad+(m.c+0.5)*CW,y2=py+(m.r+0.5)*CH;
+      if(!(Math.abs(pad+g.cx*CW-x2)<0.5&&Math.abs(py+g.cy*CH-y2)<0.5)){
+        s+='<text x="'+x2+'" y="'+(y2-4)+'" text-anchor="middle" font-size="9" fill="currentColor" '+lbl+'>'+m.cab+'</text>';
+      }
+    }
+  });
+  var seen={},gid={};
+  d.mods.forEach(function(m){gid[m.r+","+m.c]=m[k].g});
+  d.mods.forEach(function(m){
+    var g=m[k].g,col=COLORS[g%COLORS.length],x=pad+m.c*CW,y=py+m.r*CH,e="";
+    if(gid[(m.r-1)+","+m.c]!==g)e+='M'+x+' '+y+'H'+(x+CW);
+    if(gid[(m.r+1)+","+m.c]!==g)e+='M'+x+' '+(y+CH)+'H'+(x+CW);
+    if(gid[m.r+","+(m.c-1)]!==g)e+='M'+x+' '+y+'V'+(y+CH);
+    if(gid[m.r+","+(m.c+1)]!==g)e+='M'+(x+CW)+' '+y+'V'+(y+CH);
+    if(e)s+='<path d="'+e+'" fill="none" stroke="'+col+'" stroke-width="3" stroke-linecap="square"/>';
+  });
+  if(!isR){
+    var fcs=[];seen={};
+    d.mods.forEach(function(m){var g=m.F;if(seen[g.g])return;seen[g.g]=1;fcs[g.g]=[pad+g.cx*CW,py+g.cy*CH]});
+    s+='<polyline points="'+fcs.map(function(q){return q[0]+","+q[1]}).join(" ")+'" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="1 5" stroke-linecap="round" stroke-linejoin="round"/>';
+  }
+  if(!isR){
+    var rcn={};d.mods.forEach(function(m){rcn[m.R.g]=m.R});
+    d.rcab.forEach(function(e){
+      var fg,rg=rcn[e.r];
+      d.mods.some(function(m){if(m.F.g===e.f){fg=m.F;return true}});
+      var fx=pad+fg.cx*CW,fy=py+fg.cy*CH,rx=pad+rg.cx*CW,ry=py+rg.cy*CH+13;
+      var pts=fx+","+fy+" "+rx+","+fy+" "+rx+","+ry;
+      s+='<polyline points="'+pts+'" fill="none" stroke="currentColor" stroke-opacity="0.55" stroke-width="6" stroke-linejoin="round"/>';
+      s+='<polyline points="'+pts+'" fill="none" stroke="#f59e0b" stroke-width="3.5" stroke-linejoin="round"/>';
+      s+='<rect x="'+(rx-13)+'" y="'+(ry-6)+'" width="26" height="12" rx="3" fill="#f59e0b"/>';
+      s+='<text x="'+rx+'" y="'+(ry+4)+'" text-anchor="middle" font-size="10" font-weight="700" fill="#1a1100">R'+(e.r+1)+'</text>';
+    });
+  }
+  if(isR){
+    var cs=[];seen={};
+    d.mods.forEach(function(m){var g=m.R;if(seen[g.g])return;seen[g.g]=1;cs[g.g]=[pad+g.cx*CW,py+g.cy*CH]});
+    var pts=[(pad+22)+","+(pad+18)].concat(cs.map(function(p){return p[0]+","+p[1]}));
+    s+='<polyline points="'+pts.join(" ")+'" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="6 4" stroke-linejoin="round"/>';
+    s+='<rect x="'+pad+'" y="'+(pad-6)+'" width="44" height="22" rx="4" fill="currentColor"/>';
+    s+='<text x="'+(pad+22)+'" y="'+(pad+9)+'" text-anchor="middle" font-size="11" font-weight="600" style="fill:var(--surface)">'+lab+'</text>';
+  }
+  seen={};
+  d.mods.forEach(function(m){
+    var g=m[k];if(seen[g.g])return;seen[g.g]=1;
+    var col=COLORS[g.g%COLORS.length],cx=pad+g.cx*CW,cy=py+g.cy*CH;
+    s+='<rect x="'+(cx-13)+'" y="'+(cy-6)+'" width="26" height="12" rx="3" fill="'+col+'"/>';
+    s+='<text x="'+cx+'" y="'+(cy+4)+'" text-anchor="middle" font-size="10" font-weight="600" fill="#fff">'+tag+(g.g+1)+'</text>';
+  });
+  s+='</svg>';
+  return s;
+}
+
+function ranges(a){
+  var out=[],i=0;
+  while(i<a.length){var j=i;while(j+1<a.length&&a[j+1]===a[j]+1)j++;out.push(j>i+1?a[i]+"–"+a[j]:a.slice(i,j+1).join(", "));i=j+1}
+  return out.join(", ");
+}
+function drawGroups(d){
+  var R={},F={};
+  d.mods.forEach(function(m){(R[m.R.g]=R[m.R.g]||[]).push(m.n);(F[m.F.g]=F[m.F.g]||[]).push(m.n)});
+  var h="";
+  Object.keys(R).forEach(function(g){h+='<div><b>Receiving '+(+g+1)+':</b> módulos '+ranges(R[g])+'</div>'});
+  Object.keys(F).forEach(function(g){h+='<div><b>Fonte '+(+g+1)+':</b> módulos '+ranges(F[g])+' ('+d.dcBy[g]+' cabo'+(d.dcBy[g]>1?'s':'')+' DC'+(d.rcFor[g]!==undefined?' + 1 cabo DC para o receiving R'+(d.rcFor[g]+1):'')+')</div>'});
+  return h;
+}
+
+document.addEventListener("input",function(e){
+  var t=e.target;
+  if(t&&(t.id==="mw"||t.id==="mh"))updSteps();
+  if(t&&t.dataset&&t.dataset.f!==undefined)faces[+t.dataset.f][t.dataset.k]=parseFloat(t.value)||0;
+  render();
+});
+$("faces").addEventListener("click",function(e){
+  var b=e.target.closest?e.target.closest("button"):null;if(!b||b.disabled)return;
+  if(b.dataset.add&&faces.length<4){var l=faces[faces.length-1];faces.push({w:l.w,h:l.h});buildFaces();render()}
+  else if(b.dataset.del!==undefined&&faces.length>1){faces.splice(+b.dataset.del,1);buildFaces();render()}
+});
+$("rl").onclick=function(){ang-=90;applyAng()};
+$("rr").onclick=function(){ang+=90;applyAng()};
+var drag=null;
+$("scene").addEventListener("pointerdown",function(e){drag={x:e.clientX,a:ang}});
+document.addEventListener("pointermove",function(e){if(drag){ang=drag.a+(e.clientX-drag.x)*0.5;applyAng()}});
+document.addEventListener("pointerup",function(){drag=null});
+buildFaces();
+$("tR").onclick=function(){view="R";$("tR").setAttribute("aria-pressed","true");$("tF").setAttribute("aria-pressed","false");render()};
+$("tF").onclick=function(){view="F";$("tF").setAttribute("aria-pressed","true");$("tR").setAttribute("aria-pressed","false");render()};
+$("pr1").onclick=function(){window.print()};
+render();
+</script>
+</body>
+</html>
